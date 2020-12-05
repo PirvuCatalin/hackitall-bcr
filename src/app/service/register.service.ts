@@ -7,9 +7,9 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class RegisterService {
-  uploadFileUrl = '/bcr-backend/validate_images';
-  registerUrl = '/bcr-backend/register';
-  loginUrl = '/bcr-backend/login';
+  uploadFileUrl = 'https://bcr-backend.herokuapp.com/validate_images';
+  registerUrl = 'https://bcr-backend.herokuapp.com/register';
+  loginUrl = 'https://bcr-backend.herokuapp.com/login';
 
   constructor(private http: HttpClient) { }
 
