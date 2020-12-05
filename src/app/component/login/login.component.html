@@ -1,0 +1,27 @@
+<div class="login-component">
+    <!-- Default form login -->
+    <form class="text-center border border-light p-5 login-form">
+
+        <p class="h4 mb-4">Log in</p>
+
+        <!-- Email -->
+        <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" value="{{email}}">
+
+        <!-- Password -->
+        <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password"
+            value="{{password}}">
+
+        <div [hidden]="!loginError" class="alert alert-danger">Wrong username or password.</div>
+        <!-- Sign in button -->
+        <div mdbBtn color="info" class="my-4" (click)="login()">Log in</div>
+
+        <!-- Register -->
+        <p>Not a member?
+            <a routerLink="/register">Register</a>
+        </p>
+
+    </form>
+    <!-- Default form login -->
+</div>
+
+<!-- asscatalynn.bboy@gmail.com / password1 -->

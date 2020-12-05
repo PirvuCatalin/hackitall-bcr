@@ -13,9 +13,20 @@
     height: fit-content;
 }
 
+.signup-screen {
+    display: none;
+}
+
+.upload-id {
+    padding-top: 24px;
+}
+
 @media screen and (max-width: 768px) {
     .register-form {
         width: 100vw;
         min-width: unset;
+    }
+    .browse-image-text {
+        display: none;
     }
 }

@@ -1,0 +1,18 @@
+.login-component {
+    min-height: calc(100vh - 236px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    width: 50vw;
+    min-width: 500px;
+}
+
+@media screen and (max-width: 768px) {
+    .login-form {
+        width: 100vw;
+        min-width: unset;
+    }
+}

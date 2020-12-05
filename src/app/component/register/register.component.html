@@ -4,9 +4,53 @@
 
         <p class="h4 mb-4">Sign up</p>
 
+        <div class="upload-images-screen" id="uploadImagesScreen">
+            <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                We must first check that both images match
+            </small>
+
+            <input type="email" [disabled]="inputDisabled" (keyup)="onKey($event)" id="defaultRegisterFormEmail"
+                class="form-control mb-4" placeholder="E-mail">
+
+            <div [hidden]="retakePhotosAlertHidden" class="alert alert-danger">Couldn't identify your face, please try
+                retaking the photos.</div>
 
 
-        <!-- <div class="form-row mb-4">
+            <div class="input-group" (click)="checkIfEmail()">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Upload Selfie</span>
+                </div>
+                <div class="custom-file">
+                    <input [disabled]="chooseSelfieDisabled" type="file" class="custom-file-input" id="inputGroupFile01"
+                        aria-describedby="inputGroupFileAddon01" (change)="handleSelfieInput($event.target)">
+                    <label class="custom-file-label" for="inputGroupFile01">
+                        <div class="browse-image-text">
+                            Choose selfie
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="input-group upload-id" [hidden]="uploadIdHidden">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Upload Identity Card</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                        aria-describedby="inputGroupFileAddon01" (change)="handleIDInput($event.target)">
+                    <label class="custom-file-label" for="inputGroupFile01">
+                        <div class="browse-image-text">
+                            Choose identity card
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div mdbBtn color="info" class="my-4" [hidden]="checkButtonHidden" (click)="checkImages()">Check</div>
+        </div>
+
+        <div id="signupScreen" class="signup-screen">
+            <!-- <div class="form-row mb-4">
             <div class="col">
                 <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
             </div>
@@ -15,35 +59,39 @@
             </div>
         </div> -->
 
-        <!-- E-mail -->
-        <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+            <!-- E-mail -->
+            <input type="email" disabled value="{{email}}" id="defaultRegisterFormEmail" class="form-control mb-4"
+                placeholder="E-mail">
 
-        <!-- Password -->
-        <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
-            aria-describedby="defaultRegisterFormPasswordHelpBlock">
-        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-            At least 8 characters and 1 digit
-        </small>
+            <!-- Password -->
+            <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
+                (keyup)="onKeyPassword($event)" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+            <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                At least 8 characters and 1 digit
+            </small>
 
-        <!-- Phone number -->
-        <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number"
-            aria-describedby="defaultRegisterFormPhoneHelpBlock">
-        <!-- <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
+            <!-- Phone number -->
+            <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number"
+                (keyup)="onKeyPhone($event)" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+            <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                10 digit phone number
+            </small>
+            <!-- <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
             Optional - for two-step authentication
         </small> -->
 
-        <!-- Newsletter -->
-        <!-- <div class="row">
+            <!-- Newsletter -->
+            <!-- <div class="row">
             <div class="col-md-6 mx-auto d-flex justify-content-center">
                 <mdb-checkbox [default]="true">Subscribe to our newsletter</mdb-checkbox>
             </div>
         </div> -->
 
-        <!-- Sign up button -->
-        <button mdbBtn color="info" class="my-4" type="submit">Sign in</button>
+            <!-- Sign up button -->
+            <div mdbBtn color="info" class="my-4" (click)="signUp()" [hidden]="signInDisabled">Sign up</div>
 
-        <!-- Social register -->
-        <!-- <p>or sign up with:</p>
+            <!-- Social register -->
+            <!-- <p>or sign up with:</p>
 
         <a type="button" class="light-blue-text mx-2">
             <mdb-icon fab icon="facebook"></mdb-icon>
@@ -58,14 +106,19 @@
             <mdb-icon fab icon="github"></mdb-icon>
         </a> -->
 
-        <hr>
+            <hr>
 
-        <!-- Terms of service -->
-        <p>By clicking
-            <em>Sign up</em> you agree to our
-            <a routerLink="/terms">terms of service</a>
+            <!-- Terms of service -->
+            <p>By clicking
+                <em>Sign up</em> you agree to our
+                <a routerLink="/terms">terms of service</a>
+            </p>
+
+        </div>
+        <!-- Register -->
+        <p style="padding-top:2vh">Already a user?
+            <a routerLink="/login">Log in</a>
         </p>
-
     </form>
     <!-- Default form register -->
 </div>
