@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "hackitall-bcr": {
+      "hosting": {
+        "hackitall-bcr": [
+          "hackitall-bcr"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "hackitall-bcr"
+  }
+}
