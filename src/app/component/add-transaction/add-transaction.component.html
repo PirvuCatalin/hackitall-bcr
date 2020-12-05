@@ -1,0 +1,49 @@
+<div class="add-transaction-component">
+    <!-- Default form contact -->
+    <form class="add-transaction-form text-center border border-light p-5">
+
+        <div [hidden]="hideAddTransaction">
+            <p class="h4 mb-4">Add a new transaction</p>
+            <!-- Subject -->
+            <label>Type</label>
+            <select class="browser-default custom-select mb-4" id="defaultContactFormType"
+                (change)="onChangeType($event.target)">
+                <option value="" disabled>Choose transaction type</option>
+                <option value="Fashion" selected>Fashion</option>
+                <option value="Groceries">Groceries</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Leisure">Leisure</option>
+                <option value="Sports">Sports</option>
+            </select>
+
+            <label>Date</label>
+            <input id="defaultContactFormDate" class="form-control mb-4" type="date" min="2020-05-11"
+                max="{{maxDate}}" />
+
+            <!-- Name -->
+            <select class="browser-default custom-select mb-4" id="defaultContactFormPlace">
+                <option value="" disabled selected>Choose a place</option>
+                <option *ngFor="let place of currentPlaces" [value]="place">
+                    {{place}}
+                </option>
+            </select>
+
+            <!-- Email -->
+            <input type="number" id="defaultContactFormAmount" class="form-control mb-4" placeholder="Amount">
+
+            <div class="alert alert-danger" [hidden]="!fieldsHaveError">
+                {{errorMessage}}
+            </div>
+            <!-- Send button -->
+            <div mdbBtn color="info" (click)="addNewTransaction()">Add</div>
+        </div>
+
+        <div [hidden]="hideWantNewTransaction">
+            <p class="h4 mb-4">Want to add a new transaction?</p>
+
+            <div mdbBtn color="info" (click)="wantNewTransaction()">Add new</div>
+        </div>
+
+    </form>
+    <!-- Default form contact -->
+</div>

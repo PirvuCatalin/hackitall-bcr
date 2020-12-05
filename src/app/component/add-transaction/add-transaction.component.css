@@ -1,0 +1,23 @@
+.add-transaction-component {
+    min-height: calc(100vh - 236px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-transaction-form {
+    width: 50vw;
+    min-width: 400px;
+    height: fit-content;
+}
+
+.btn-info {
+    background-color: #FF874B !important;
+}
+
+@media screen and (max-width: 768px) {
+    .add-transaction-form {
+        width: 100vw;
+        min-width: unset;
+    }
+}

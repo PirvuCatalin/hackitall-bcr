@@ -12,6 +12,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterComponent } from './component/register/register.component';
 import { LoginComponent } from './component/login/login.component';
 import { HttpconfigInterceptor } from './httpconfig.interceptor';
+import { AddTransactionComponent } from './component/add-transaction/add-transaction.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpconfigInterceptor } from './httpconfig.interceptor';
     FooterComponent,
     HomeComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    AddTransactionComponent
   ],
   imports: [
     BrowserModule,
