@@ -27,6 +27,8 @@ export class RegisterComponent implements OnInit {
   password: string = "";
   phone: string = "";
 
+  errorMessage: string = "Couldn't identify your face, please try retaking the photos.";
+
   ngOnInit(): void {
   }
 
@@ -76,6 +78,13 @@ export class RegisterComponent implements OnInit {
       if (data["errors"] && data["errors"].length > 0) {
         console.log("error");
         console.log(data);
+        if (data.errors == "User already exists") {
+          this.errorMessage = "Email already in use. Try logging in.";
+          this.inputDisabled = false;
+        } else if (data.errors == "Invalid email") {
+          this.errorMessage = "Invalid email address ;(";
+          this.inputDisabled = false;
+        }
         this.uploadIdHidden = true;
         this.checkButtonHidden = true;
         this.retakePhotosAlertHidden = false;

@@ -34,4 +34,9 @@ export class CommonService {
       return false
     }
   }
+
+  logout() {
+    this.token = "";
+    localStorage.setItem("jwt-token-verySecure", "");
+  }
 }

@@ -12,8 +12,7 @@
             <input type="email" [disabled]="inputDisabled" (keyup)="onKey($event)" id="defaultRegisterFormEmail"
                 class="form-control mb-4" placeholder="E-mail">
 
-            <div [hidden]="retakePhotosAlertHidden" class="alert alert-danger">Couldn't identify your face, please try
-                retaking the photos.</div>
+            <div [hidden]="retakePhotosAlertHidden" class="alert alert-danger">{{errorMessage}}</div>
 
 
             <div class="input-group" (click)="checkIfEmail()">
