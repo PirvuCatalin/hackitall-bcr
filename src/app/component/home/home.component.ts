@@ -9,13 +9,31 @@ import { CommonService } from 'src/app/service/common.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private bcrBackendService: BcrBackendService, private commonService: CommonService) { }
+  constructor(private bcrBackendService: BcrBackendService, public commonService: CommonService) { }
+
+  recommendation = "";
+  expenses: any = "";
 
   textFromBackend = "No text from backend ;(";
 
   ngOnInit(): void {
-    this.bcrBackendService.getText().subscribe(response => {
-      this.textFromBackend = JSON.stringify(response);
+    this.bcrBackendService.getRecommendations().subscribe(response => {
+      this.recommendation = response.response;
+    })
+
+    this.bcrBackendService.getPercentageSpent().subscribe(response => {
+
+      var arr = [];
+
+      for (var key in response.response) {
+        if (response.response.hasOwnProperty(key)) {
+          arr.push({ "key": key, "value": response.response[key] });
+        }
+      }
+      arr = arr.sort(function (a, b) {
+        return b.value - a.value;
+      });
+      this.expenses = arr;
     })
   }
 

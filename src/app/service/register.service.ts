@@ -41,7 +41,6 @@ export class RegisterService {
     return this.http
       .post(this.loginUrl, formData)
       .pipe(map((response: any) => {
-        console.log("we set the token to:" + response.response);
         this.commonService.setToken(response.response);
         return response;
       }));

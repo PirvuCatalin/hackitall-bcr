@@ -1,8 +1,32 @@
-.container-lg p {
-    line-height: 200px;
-    /* Create scrollbar to test positioning */
-}
-
 .home-component {
     min-height: calc(100vh - 236px);
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+.btn-info {
+    background-color: #FF874B !important;
+}
+
+.recommendation-description {
+    font-size: max(1.5vw, 1rem);
+}
+
+.home-expenses {
+    width: 50%;
+}
+
+.badge-primary {
+    background-color: #FF874B!important;
+}
+
+.latest-expenses-title {
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+@media screen and (max-width: 768px) {
+    .display-6 {
+        font-size: 2rem;
+    }
 }
