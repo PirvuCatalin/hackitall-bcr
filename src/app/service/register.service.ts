@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { CommonService } from '../service/common.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class RegisterService {
   registerUrl = 'https://bcr-backend.herokuapp.com/register';
   loginUrl = 'https://bcr-backend.herokuapp.com/login';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private commonService: CommonService) { }
 
   uploadImages(email: string, imageFile: any, idFile: any): Observable<any> {
     const formData: FormData = new FormData();
@@ -39,6 +40,10 @@ export class RegisterService {
     formData.append('password', password);
     return this.http
       .post(this.loginUrl, formData)
-      .pipe(map((response: any) => response));
+      .pipe(map((response: any) => {
+        console.log("we set the token to:" + response.response);
+        this.commonService.setToken(response.response);
+        return response;
+      }));
   }
 }
