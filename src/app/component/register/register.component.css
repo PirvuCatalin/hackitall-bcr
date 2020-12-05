@@ -1,0 +1,21 @@
+.register-component {
+    min-height: calc(100vh - 236px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-form {
+    width: 50vw;
+    min-width: 600px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    height: fit-content;
+}
+
+@media screen and (max-width: 768px) {
+    .register-form {
+        width: 100vw;
+        min-width: unset;
+    }
+}

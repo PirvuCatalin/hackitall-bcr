@@ -3,6 +3,7 @@
     top: 0;
     display: block;
     min-height: 100px;
+    z-index: 9999;
 }
 
 img {
