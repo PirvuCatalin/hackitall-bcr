@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BcrBackendService } from 'src/app/service/bcr-backend.service';
+import { CommonService } from 'src/app/service/common.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { BcrBackendService } from 'src/app/service/bcr-backend.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private bcrBackendService: BcrBackendService) { }
+  constructor(private bcrBackendService: BcrBackendService, private commonService: CommonService) { }
 
   textFromBackend = "No text from backend ;(";
 

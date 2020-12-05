@@ -11,6 +11,10 @@ export class BcrBackendService {
   addTransactionUrl = 'https://bcr-backend.herokuapp.com/make_transaction';
   getTransactionsUrl= 'https://bcr-backend.herokuapp.com/get_transactions';
   addAppointmentUrl= 'https://bcr-backend.herokuapp.com/make_appointment';
+  getRecommendationsUrl= 'https://bcr-backend.herokuapp.com/get_recommendations';
+  getFutureAppointmentsUrl= 'https://bcr-backend.herokuapp.com/get_future_appointments';
+  getPercentageSpentUrl= 'https://bcr-backend.herokuapp.com/get_percentage_spent';
+  getTotalSpentUrl= 'https://bcr-backend.herokuapp.com/get_total_spent';
 
   constructor(private http: HttpClient) { }
 
@@ -32,5 +36,21 @@ export class BcrBackendService {
     return this.http
       .post(this.addAppointmentUrl, appointment)
       .pipe(map((response: any) => response));
+  }
+
+  getRecommendations(): Observable<any> {
+    return this.http.get<JSON>(this.getRecommendationsUrl);
+  }
+
+  getFutureAppointments(): Observable<any> {
+    return this.http.get<JSON>(this.getFutureAppointmentsUrl);
+  }
+
+  getPercentageSpent(): Observable<any> {
+    return this.http.get<JSON>(this.getPercentageSpentUrl);
+  }
+
+  getTotalSpent(): Observable<any> {
+    return this.http.get<JSON>(this.getTotalSpentUrl);
   }
 }

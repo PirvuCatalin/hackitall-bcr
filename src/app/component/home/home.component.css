@@ -2,3 +2,7 @@
     line-height: 200px;
     /* Create scrollbar to test positioning */
 }
+
+.home-component {
+    min-height: calc(100vh - 236px);
+}
