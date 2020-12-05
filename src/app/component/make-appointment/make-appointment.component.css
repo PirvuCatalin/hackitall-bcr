@@ -1,0 +1,20 @@
+.make-appointment-component {
+    min-height: calc(100vh - 236px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.make-appointment-form  {
+    width: 50vw;
+    min-width: 400px;
+    height: fit-content;
+}
+
+.btn-info {
+    background-color: #FF874B !important;
+}
+
+.btn.btn-sm {
+    background-color: #FF874B !important;
+}

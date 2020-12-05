@@ -5,11 +5,6 @@
     <links>
         <!-- Links -->
         <ul class="navbar-nav ml-auto">
-            <li *ngIf="this.commonService.isLoggedIn()" class="nav-item">
-                <a class="nav-link waves-light" mdbWavesEffect routerLink="add-transaction">
-                    <mdb-icon fas icon="dollar-sign"></mdb-icon>Add transaction<span class="sr-only">(current)</span>
-                </a>
-            </li>
 
             <li *ngIf="this.commonService.isLoggedIn()" class="nav-item">
                 <a class="nav-link waves-light" mdbWavesEffect routerLink="transactions">
@@ -26,6 +21,8 @@
                 </a>
                 <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
                     <a *ngIf="this.commonService.isLoggedIn()" class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
+                    <a *ngIf="this.commonService.isLoggedIn()" class="dropdown-item waves-light" mdbWavesEffect routerLink="add-transaction">Add transaction</a>
+                    <a *ngIf="this.commonService.isLoggedIn()" class="dropdown-item waves-light" mdbWavesEffect routerLink="make-appointment">Make apointment</a>
                     <a *ngIf="this.commonService.isLoggedIn()" class="dropdown-item waves-light" mdbWavesEffect (click)="handleLogout()">Log out</a>
                     <a *ngIf="!this.commonService.isLoggedIn()" class="dropdown-item waves-light" mdbWavesEffect routerLink="login">Login</a>
                 </div>
