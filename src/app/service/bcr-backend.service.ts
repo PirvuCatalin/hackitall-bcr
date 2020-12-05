@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BcrBackendService {
-  getTextUrl = '/bcr-backend/get_text';
+  getTextUrl = 'https://hackitall-bcr.web.app/get_text';
 
   constructor(private http: HttpClient) { }
 

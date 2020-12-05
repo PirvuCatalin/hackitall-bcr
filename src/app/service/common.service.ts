@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class CommonService {
   token: string = "";
-  
+
 
   constructor() { }
 
@@ -24,6 +24,14 @@ export class CommonService {
       }
     } else {
       return this.token;
+    }
+  }
+
+  isLoggedIn(): boolean {
+    if (this.getToken() != null) {
+      return true;
+    } else {
+      return false
     }
   }
 }
