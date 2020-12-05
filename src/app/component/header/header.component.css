@@ -1,0 +1,5 @@
+.navbar-header {
+    position: sticky;
+    top: 0;
+    display: block;
+}
