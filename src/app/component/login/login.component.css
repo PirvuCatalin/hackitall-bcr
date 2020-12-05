@@ -10,6 +10,10 @@
     min-width: 500px;
 }
 
+.btn-info {
+    background-color: #FF874B !important;
+}
+
 @media screen and (max-width: 768px) {
     .login-form {
         width: 100vw;

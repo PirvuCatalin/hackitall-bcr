@@ -10,3 +10,11 @@
 .custom-header mdb-navbar-brand a {
     height: 100%;
 }
+
+.social-buttons {
+    color: #FF874B !important;
+}
+
+.navbar .nav-item .nav-link .fab, .navbar .nav-item .nav-link .far, .navbar .nav-item .nav-link .fas {
+    color: #FF874B !important;
+}
