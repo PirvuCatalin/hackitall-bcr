@@ -9,13 +9,12 @@ import { CommonService } from 'src/app/service/common.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public commonService: CommonService, private router: Router) { }
+  constructor(public commonService: CommonService, ) { }
 
   ngOnInit(): void {
   }
 
   handleLogout() {
     this.commonService.logout();
-    this.router.navigateByUrl("login");
   }
 }

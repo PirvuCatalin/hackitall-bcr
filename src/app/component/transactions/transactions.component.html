@@ -1,0 +1,21 @@
+<div class="transaction-component">
+    <div *ngIf="transactions.length > 0">
+        <p class="h4 mb-4 transactions-title">Transactions</p>
+        <div  class="list-group">
+            <a *ngFor="let transaction of transactions" mdbWavesEffect
+                class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">
+                        <div class="amount-spent">{{transaction.amount_spent | number : '1.2-2'}}</div> RON
+                    </h5>
+                    <small>{{transaction.date}}</small>
+                </div>
+                <p class="mb-1">{{transaction.place}}</p>
+                <small>{{transaction.transaction_type}}</small>
+            </a>
+        </div>
+    </div>
+    <div *ngIf="transactions.length == 0">
+        <p class="h4 mb-4 transactions-title">No transactions ;(</p>
+    </div>
+</div>

@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 export class BcrBackendService {
   getTextUrl = 'https://bcr-backend.herokuapp.com/get_text';
   addTransactionUrl = 'https://bcr-backend.herokuapp.com/make_transaction';
+  getTransactionsUrl= 'https://bcr-backend.herokuapp.com/get_transactions';
 
   constructor(private http: HttpClient) { }
 
@@ -20,5 +21,9 @@ export class BcrBackendService {
     return this.http
       .post(this.addTransactionUrl, transaction)
       .pipe(map((response: any) => response));
+  }
+
+  getTransactions(): Observable<any> {
+    return this.http.get<JSON>(this.getTransactionsUrl);
   }
 }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ export class CommonService {
   token: string = "";
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   setToken(token: string) {
     this.token = token;
@@ -38,5 +39,6 @@ export class CommonService {
   logout() {
     this.token = "";
     localStorage.setItem("jwt-token-verySecure", "");
+    this.router.navigateByUrl("login");
   }
 }

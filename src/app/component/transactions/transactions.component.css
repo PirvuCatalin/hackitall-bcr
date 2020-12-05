@@ -1,0 +1,26 @@
+.transaction-component {
+    min-height: calc(100vh - 236px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.list-group {
+    width: 50vw;
+}
+
+.amount-spent {
+    color: #FF874B;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.transactions-title {
+    text-align: center;
+}
+
+.list-group {
+    overflow: scroll;
+    max-height: calc(80vh - 236px);
+}

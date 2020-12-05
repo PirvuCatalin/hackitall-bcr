@@ -13,6 +13,7 @@ import { RegisterComponent } from './component/register/register.component';
 import { LoginComponent } from './component/login/login.component';
 import { HttpconfigInterceptor } from './httpconfig.interceptor';
 import { AddTransactionComponent } from './component/add-transaction/add-transaction.component';
+import { TransactionsComponent } from './component/transactions/transactions.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AddTransactionComponent } from './component/add-transaction/add-transac
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    AddTransactionComponent
+    AddTransactionComponent,
+    TransactionsComponent
   ],
   imports: [
     BrowserModule,
