@@ -1,0 +1,11 @@
+{
+  "/bcr-backend/*": {
+    "target": "https://bcr-backend.herokuapp.com/",
+    "secure": true,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/bcr-backend": ""
+    }
+  }
+}
