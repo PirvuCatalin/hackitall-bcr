@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   inputDisabled = false;
   retakePhotosAlertHidden = true;
   signInDisabled = true;
+  spinnerHidden = true;
 
   passwordOk = false;
   phoneOk = false;
@@ -74,7 +75,9 @@ export class RegisterComponent implements OnInit {
   checkImages() {
     console.log(this.imageFile);
     console.log(this.idFile);
+    this.spinnerHidden = false;
     this.registerService.uploadImages(this.email, this.imageFile, this.idFile).subscribe(data => {
+      this.spinnerHidden = true;
       if (data["errors"] && data["errors"].length > 0) {
         console.log("error");
         console.log(data);
