@@ -13,18 +13,18 @@ export class HomeComponent implements OnInit {
 
   recommendation = "";
   expenses: any = "";
+  totalSpent = 0;
+  futureAppointments: any = "";
 
   textFromBackend = "No text from backend ;(";
 
   ngOnInit(): void {
     this.bcrBackendService.getRecommendations().subscribe(response => {
       this.recommendation = response.response;
-    })
+    });
 
     this.bcrBackendService.getPercentageSpent().subscribe(response => {
-
       var arr = [];
-
       for (var key in response.response) {
         if (response.response.hasOwnProperty(key)) {
           arr.push({ "key": key, "value": response.response[key] });
@@ -34,7 +34,14 @@ export class HomeComponent implements OnInit {
         return b.value - a.value;
       });
       this.expenses = arr;
-    })
-  }
+    });
 
+    this.bcrBackendService.getTotalSpent().subscribe(response => {
+      this.totalSpent = response.response;
+    });
+
+    this.bcrBackendService.getFutureAppointments().subscribe(response => {
+      this.futureAppointments = response.response;
+    });
+  }
 }

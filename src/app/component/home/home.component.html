@@ -8,18 +8,55 @@
             <p *ngIf="recommendation.length == 0">Unfortunately there are not recommandation for you at this time.</p>
             <!-- <a mdbBtn color="primary" class="btn-info" size="lg" routerLink="/add-transaction" role="button" mdbWavesEffect>Add transaction</a> -->
 
-            <div class="home-expenses" *ngIf="recommendation.length != 0">
-                <br>
+            <a mdbBtn color="primary" class="btn-info" size="sm" routerLink="/add-transaction" role="button"
+                mdbWavesEffect>Add new transaction</a>
 
+            <div class="home-expenses" *ngIf="expenses.length != 0">
+                <br>
                 <p class="latest-expenses-title"> Your latest expenses:</p>
                 <ul class="list-group">
                     <li *ngFor="let expense of expenses"
                         class="list-group-item d-flex justify-content-between align-items-center">
                         {{expense.key}}
-                        <mdb-badge [pill]="true" [primary]="true">{{expense.value | number : '1.2-2'}}</mdb-badge>
+                        <mdb-badge [pill]="true" [primary]="true">{{expense.value | number : '1.2-2'}} %</mdb-badge>
                     </li>
                 </ul>
             </div>
+
+            <div *ngIf="expenses.length != 0">
+                <br>
+                <p class="latest-expenses-title"> Your total expenses:</p>
+                <div class="total-expense">
+                    {{totalSpent | number : '1.2-2'}} RON
+                </div>
+            </div>
+        </div>
+
+        <div class="jumbotron">
+            <h1 class="display-6">Upcoming appointments</h1>
+            <p class="lead">In order to better prioritize our customers appointments, we expect the eventual cancelling
+                to be done at least one day before.</p>
+            <hr class="my-4">
+            <div *ngIf="futureAppointments.length == 0">
+                No future appointments.
+            </div>
+            <div *ngIf="futureAppointments.length != 0">
+                <p class="lead">Your future appointments:</p>
+                <div *ngFor="let appointment of futureAppointments">
+                    <mdb-card class="text-white mb-3 appointment-card" bgColor="special-color-dark">
+                        <mdb-card-header>{{appointment.date}}</mdb-card-header>
+                        <mdb-card-body>
+                            <mdb-card-title>
+                                <h5>Branch   -   {{appointment.name}}</h5>
+                            </mdb-card-title>
+                            <mdb-card-text class="text-white">
+                                <mdb-badge class="appointment-reason" [pill]="true" [primary]="true">{{appointment.reason}}</mdb-badge>
+                            </mdb-card-text>
+                        </mdb-card-body>
+                    </mdb-card>
+                </div>
+            </div>
+
         </div>
     </div>
 

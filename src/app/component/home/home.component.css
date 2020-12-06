@@ -16,6 +16,10 @@
     width: 50%;
 }
 
+.appointment-card {
+    max-width: 50%;
+}
+
 .badge-primary {
     background-color: #FF874B!important;
 }
@@ -25,8 +29,29 @@
     font-weight: bolder;
 }
 
+.total-expense {
+    width: max-content;
+    background-color: #FF874B;
+    color: black;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.appointment-reason {
+    font-size: 1.5rem;
+}
+
 @media screen and (max-width: 768px) {
     .display-6 {
         font-size: 2rem;
+    }
+
+    .home-expenses {
+        width: 100%;
+    }
+
+    .appointment-card {
+        max-width: 100%;
     }
 }
