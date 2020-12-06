@@ -12,7 +12,18 @@
             <input type="email" [disabled]="inputDisabled" (keyup)="onKey($event)" id="defaultRegisterFormEmail"
                 class="form-control mb-4" placeholder="E-mail">
 
-            <div [hidden]="retakePhotosAlertHidden" class="alert alert-danger">{{errorMessage}}</div>
+                <div [hidden]="retakePhotosAlertHidden">
+                    <div  class="alert alert-danger">
+                        {{errorMessage}}
+                    </div>
+
+                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                        Having trouble signing up? Bypass the images checks, for testing purposes ;)
+                    </small>
+                    <input type="checkbox" id="bypassChecks" name="bypassChecks" value="Bike">
+                    <label for="bypassChecks">Bypass image checks</label><br>
+                </div>
+            
 
 
             <div class="input-group" (click)="checkIfEmail()">

@@ -9,6 +9,7 @@ import { CommonService } from '../service/common.service';
 })
 export class RegisterService {
   uploadFileUrl = 'https://bcr-backend.herokuapp.com/validate_images';
+  bypassUploadFileUrl = 'https://bcr-backend.herokuapp.com/bypass_validate_images';
   registerUrl = 'https://bcr-backend.herokuapp.com/register';
   loginUrl = 'https://bcr-backend.herokuapp.com/login';
 
@@ -21,6 +22,16 @@ export class RegisterService {
     formData.append('file_id', idFile);
     return this.http
       .post(this.uploadFileUrl, formData)
+      .pipe(map((response: any) => response));
+  }
+
+  bypassUploadImages(email: string, imageFile: any, idFile: any): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('email', email);
+    formData.append('file_image', imageFile);
+    formData.append('file_id', idFile);
+    return this.http
+      .post(this.bypassUploadFileUrl, formData)
       .pipe(map((response: any) => response));
   }
 

@@ -73,47 +73,93 @@ export class RegisterComponent implements OnInit {
   }
 
   checkImages() {
+    var bypassChecks = (<HTMLInputElement>document.getElementById("bypassChecks")).checked;
+    
     console.log(this.imageFile);
     console.log(this.idFile);
     this.spinnerHidden = false;
-    this.registerService.uploadImages(this.email, this.imageFile, this.idFile).subscribe(data => {
-      this.spinnerHidden = true;
-      if (data["errors"] && data["errors"].length > 0) {
-        console.log("error");
-        console.log(data);
-        if (data.errors == "User already exists") {
-          this.errorMessage = "Email already in use. Try logging in.";
-          this.inputDisabled = false;
-        } else if (data.errors == "Invalid email") {
-          this.errorMessage = "Invalid email address ;(";
-          this.inputDisabled = false;
+
+    if(bypassChecks) {
+      this.registerService.bypassUploadImages(this.email, this.imageFile, this.idFile).subscribe(data => {
+        this.spinnerHidden = true;
+        if (data["errors"] && data["errors"].length > 0) {
+          console.log("error");
+          console.log(data);
+          if (data.errors == "User already exists") {
+            this.errorMessage = "Email already in use. Try logging in.";
+            this.inputDisabled = false;
+          } else if (data.errors == "Invalid email") {
+            this.errorMessage = "Invalid email address ;(";
+            this.inputDisabled = false;
+          }
+          this.uploadIdHidden = true;
+          this.checkButtonHidden = true;
+          this.retakePhotosAlertHidden = false;
+        } else {
+          // do something, if upload success
+          console.log("success");
+          console.log(data);
+          let uploadImagesScreen = document.getElementById("uploadImagesScreen")
+          if (uploadImagesScreen) {
+            uploadImagesScreen.style.display = "none";
+          }
+          let signupScreen = document.getElementById("signupScreen")
+          if (signupScreen) {
+            signupScreen.style.display = "block";
+          }
         }
+  
+  
+      }, error => {
+        console.log("error");
+        console.log(error);
+  
         this.uploadIdHidden = true;
         this.checkButtonHidden = true;
         this.retakePhotosAlertHidden = false;
-      } else {
-        // do something, if upload success
-        console.log("success");
-        console.log(data);
-        let uploadImagesScreen = document.getElementById("uploadImagesScreen")
-        if (uploadImagesScreen) {
-          uploadImagesScreen.style.display = "none";
+      });
+    } else {
+      this.registerService.uploadImages(this.email, this.imageFile, this.idFile).subscribe(data => {
+        this.spinnerHidden = true;
+        if (data["errors"] && data["errors"].length > 0) {
+          console.log("error");
+          console.log(data);
+          if (data.errors == "User already exists") {
+            this.errorMessage = "Email already in use. Try logging in.";
+            this.inputDisabled = false;
+          } else if (data.errors == "Invalid email") {
+            this.errorMessage = "Invalid email address ;(";
+            this.inputDisabled = false;
+          }
+          this.uploadIdHidden = true;
+          this.checkButtonHidden = true;
+          this.retakePhotosAlertHidden = false;
+        } else {
+          // do something, if upload success
+          console.log("success");
+          console.log(data);
+          let uploadImagesScreen = document.getElementById("uploadImagesScreen")
+          if (uploadImagesScreen) {
+            uploadImagesScreen.style.display = "none";
+          }
+          let signupScreen = document.getElementById("signupScreen")
+          if (signupScreen) {
+            signupScreen.style.display = "block";
+          }
         }
-        let signupScreen = document.getElementById("signupScreen")
-        if (signupScreen) {
-          signupScreen.style.display = "block";
-        }
-      }
+  
+  
+      }, error => {
+        console.log("error");
+        console.log(error);
+  
+        this.uploadIdHidden = true;
+        this.checkButtonHidden = true;
+        this.retakePhotosAlertHidden = false;
+      });
+    }
 
-
-    }, error => {
-      console.log("error");
-      console.log(error);
-
-      this.uploadIdHidden = true;
-      this.checkButtonHidden = true;
-      this.retakePhotosAlertHidden = false;
-    });
+    
   }
 
   onKeyPassword(event: any) { // without type info

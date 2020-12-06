@@ -57,6 +57,13 @@ export class ChatbotComponent implements OnInit {
     });
   }
 
+  triggerFunction(event: any) {
+    if(event.key === 'Enter') {
+      event.preventDefault();
+      this.sendMessage();
+    }
+  }
+
   updateTimes() {
     for (let index = 0; index < this.messages.length; index++) {
       this.messages[index]["minsAgo"] = Math.floor((Date.now() - this.messages[index]["time"]) / (60 * 1000));

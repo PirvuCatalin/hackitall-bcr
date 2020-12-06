@@ -75,7 +75,8 @@
                                             <div class="form-group basic-textarea">
                                                 <textarea [disabled]="userChatDisabled" class="form-control pl-2 my-0"
                                                     id="exampleFormControlTextarea2" rows="3"
-                                                    placeholder="Type your message here..."></textarea>
+                                                    placeholder="Type your message here..."
+                                                    (keydown)="triggerFunction($event)"></textarea>
                                             </div>
                                         </li>
                                         <button type="button" mdbBtn color="info" size="sm" (click)="sendMessage()"
