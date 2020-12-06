@@ -43,11 +43,45 @@ export class HomeComponent implements OnInit {
     });
 
     this.bcrBackendService.getFutureAppointments().subscribe(response => {
-      this.futureAppointments = response.response;
+      let arr = [];
+
+      for (let index = 0; index < response.response.length; index++) {
+        const element = response.response[index].date;
+
+        var parts = element.split("/");
+        var dt = new Date(parseInt(parts[2], 10),
+          parseInt(parts[1], 10) - 1,
+          parseInt(parts[0], 10));
+
+        response.response[index].date = dt;
+      }
+
+      arr = response.response.sort(function (a: any, b: any) {
+        return a.date - b.date;
+      });
+
+      for (let index = 0; index < arr.length; index++) {
+        arr[index].date = this.formatDate(arr[index].date); 
+      }
+
+      this.futureAppointments = arr;
     });
 
     this.bcrBackendService.getCurrentAmount().subscribe(response => {
       this.currentAmount = response.response;
     });
+  }
+
+  formatDate(d: Date): string {
+    var
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2)
+      month = '0' + month;
+    if (day.length < 2)
+      day = '0' + day;
+    return day + "/" + month + "/" + year;
   }
 }
