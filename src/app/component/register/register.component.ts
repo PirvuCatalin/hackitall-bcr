@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalDirective } from 'angular-bootstrap-md';
+import { MDBModalService, ModalDirective } from 'angular-bootstrap-md';
 import { RegisterService } from 'src/app/service/register.service';
 
 @Component({
@@ -40,13 +40,22 @@ export class RegisterComponent implements OnInit {
   imageFile: any = null;
   idFile: any = null;
 
+  showUserDataMessage = false;
+
   email: string = "";
   password: string = "";
   phone: string = "";
 
   errorMessage: string = "Couldn't identify your face, please try retaking the photos.";
 
+
+  userData: any = {};
+
+
   ngOnInit(): void {
+    this.modal?.closed.subscribe(() => this.cameras.getTracks().forEach(function (track: any) {
+      track.stop();
+    }));
   }
 
   onKey(event: any) { // without type info
@@ -127,11 +136,11 @@ export class RegisterComponent implements OnInit {
       .then(function (file) {
         if (that.showSelfieCamera) {
           that.modal?.hide();
-    
+
           that.cameras.getTracks().forEach(function (track: any) {
             track.stop();
           });
-    
+
           if (!that.checkIfEmail()) {
             document.getElementById("defaultRegisterFormEmail")?.classList.add("is-invalid");
           } else {
@@ -139,21 +148,29 @@ export class RegisterComponent implements OnInit {
             that.imageFile = file;
             that.uploadIdHidden = false;
           }
-    
+
           that.showSelfieCamera = false;
           that.showIdCamera = true;
         } else {
           that.modal?.hide();
-    
+
           that.cameras.getTracks().forEach(function (track: any) {
             track.stop();
           });
-    
+
           that.checkButtonHidden = false;
           that.idFile = file;
           that.showIdCamera = false;
         }
       });
+  }
+
+  closeCamera() {
+    this.modal?.hide();
+
+    this.cameras.getTracks().forEach(function (track: any) {
+      track.stop();
+    });
   }
 
   attachVideo(stream: any) {
@@ -174,6 +191,7 @@ export class RegisterComponent implements OnInit {
   }
 
   checkImages() {
+    this.showUserDataMessage = false;
     var bypassChecks = (<HTMLInputElement>document.getElementById("bypassChecks")).checked;
 
     console.log(this.imageFile);
@@ -242,6 +260,10 @@ export class RegisterComponent implements OnInit {
           // do something, if upload success
           console.log("success");
           console.log(data);
+          if (data && data.response && data.response.cnp) {
+            this.userData = data.response;
+            this.showUserDataMessage = true;
+          }
           let uploadImagesScreen = document.getElementById("uploadImagesScreen")
           if (uploadImagesScreen) {
             uploadImagesScreen.style.display = "none";

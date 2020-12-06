@@ -12,23 +12,23 @@
             <input type="email" [disabled]="inputDisabled" (keyup)="onKey($event)" id="defaultRegisterFormEmail"
                 class="form-control mb-4" placeholder="E-mail">
 
-                <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                    You can either use the Open Camera button to use your camera or upload a file.
-                </small>
-    
+            <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                You can either use the Open Camera button to use your camera or upload a file.
+            </small>
 
-                <div [hidden]="retakePhotosAlertHidden">
-                    <div  class="alert alert-danger">
-                        {{errorMessage}}
-                    </div>
 
-                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                        Having trouble signing up? Bypass the images checks, for testing purposes ;)
-                    </small>
-                    <input type="checkbox" id="bypassChecks" name="bypassChecks" value="Bike">
-                    <label for="bypassChecks">Bypass image checks</label><br>
+            <div [hidden]="retakePhotosAlertHidden">
+                <div class="alert alert-danger">
+                    {{errorMessage}}
                 </div>
-            
+
+                <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                    Having trouble signing up? Bypass the images checks, for testing purposes ;)
+                </small>
+                <input type="checkbox" id="bypassChecks" name="bypassChecks" value="Bike">
+                <label for="bypassChecks">Bypass image checks</label><br>
+            </div>
+
 
             <div class="input-group" (click)="checkIfEmail()">
                 <div class="input-group-prepend">
@@ -44,10 +44,11 @@
                     </label>
                 </div>
             </div>
-            
-        <div mdbBtn color="info" [hidden]="!showSelfieCamera" class="my-4" (click)="openSelfieCamera()">Open camera</div>
-        <br>
-            
+
+            <div mdbBtn color="info" [hidden]="!showSelfieCamera" class="my-4" (click)="openSelfieCamera()">Open camera
+            </div>
+            <br>
+
             <div class="input-group upload-id" [hidden]="uploadIdHidden">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroupFileAddon01">Upload Identity Card</span>
@@ -62,18 +63,20 @@
                     </label>
                 </div>
             </div>
-            <div mdbBtn color="info" [hidden]="!showIdCamera" class="my-4" (click)="openSelfieCamera()">Open camera</div>
+            <div mdbBtn color="info" [hidden]="!showIdCamera" class="my-4" (click)="openSelfieCamera()">Open camera
+            </div>
             <br>
 
             <div mdbBtn color="info" class="my-4" [hidden]="checkButtonHidden" (click)="checkImages()">Check</div>
-            <div class="d-flex justify-content-center" >
+            <div class="d-flex justify-content-center">
                 <div class="spinner-border m-3" role="status" [hidden]="spinnerHidden">
-                  <span class="sr-only">Loading...</span>
+                    <span class="sr-only">Loading...</span>
                 </div>
-              </div>
+            </div>
         </div>
 
         <div id="signupScreen" class="signup-screen">
+
             <!-- <div class="form-row mb-4">
             <div class="col">
                 <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
@@ -86,6 +89,33 @@
             <!-- E-mail -->
             <input type="email" disabled value="{{email}}" id="defaultRegisterFormEmail" class="form-control mb-4"
                 placeholder="E-mail">
+            <small id="defaultRegisterFormPasswordHelpBlocks" [hidden]="!showUserDataMessage" class="form-text text-muted mb-4">
+                Please correct the information below if needed.
+            </small>
+
+            <div class="form-row mb-4">
+                <div class="col">
+                    <!-- First name -->
+                    <input type="text" id="defaultRegisterFormFirstName" value="{{userData.first_name}}"
+                        class="form-control" placeholder="First name">
+                </div>
+                <div class="col">
+                    <!-- Last name -->
+                    <input type="text" id="defaultRegisterFormLastName" value="{{userData.last_name}}"
+                        class="form-control" placeholder="Last name">
+                </div>
+            </div>
+
+            <div class="form-row mb-4">
+                <div class="col">
+                    <input type="text" id="defaultRegisterFormCnp" value="{{userData.cnp}}" class="form-control"
+                        placeholder="CNP">
+                </div>
+                <div class="col">
+                    <input type="text" id="defaultRegisterFormSerie" value="{{userData.serie}}" class="form-control"
+                        placeholder="Serie">
+                </div>
+            </div>
 
             <!-- Password -->
             <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
@@ -147,32 +177,34 @@
     <!-- Default form register -->
 </div>
 
-<div mdbModal #demoBasic="mdbModal" class="modal fade" id="basicExample" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div mdbModal #demoBasic="mdbModal" class="modal fade" id="basicExample" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title w-100" id="myModalLabel">Appointment created</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="demoBasic.hide()">
+                <h4 class="modal-title w-100" id="myModalLabel">Capture image</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeCamera()">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="container vh-100">
                     <div class="d-flex flex-column align-items-center">
-                       <div class="p-1">
-                          <video #video class="vid" autoplay></video>
-                       </div>
-                       <div class="pb-2">
-                          <button class="btn btn-primary" (click)="capture()">Capture Image</button>
-                       </div>
-                       <div hidden class="p-1">
-                          <canvas id="canvas" #canvas class="vid"></canvas>
-                       </div>
+                        <div class="p-1">
+                            <video #video class="vid" autoplay></video>
+                        </div>
+                        <div class="pb-2">
+                            <button class="btn btn-primary" (click)="capture()">Capture Image</button>
+                        </div>
+                        <div hidden class="p-1">
+                            <canvas id="canvas" #canvas class="vid"></canvas>
+                        </div>
                     </div>
-                 </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" mdbBtn color="secondary" size="sm" class="bwaves-light" data-dismiss="modal" (click)="demoBasic.hide()" mdbWavesEffect>Close</button>
+                <button type="button" mdbBtn color="secondary" size="sm" class="bwaves-light" data-dismiss="modal"
+                    (click)="demoBasic.hide()" mdbWavesEffect>Close</button>
             </div>
         </div>
     </div>
