@@ -16,6 +16,7 @@ export class BcrBackendService {
   getPercentageSpentUrl= 'https://bcr-backend.herokuapp.com/get_percentage_spent';
   getTotalSpentUrl= 'https://bcr-backend.herokuapp.com/get_total_spent';
   sendMessageUrl= 'https://bcr-backend.herokuapp.com/get_chatbot_message';
+  getCurrentAmountUrl= 'https://bcr-backend.herokuapp.com/get_total_amount';
 
   constructor(private http: HttpClient) { }
 
@@ -53,6 +54,10 @@ export class BcrBackendService {
 
   getTotalSpent(): Observable<any> {
     return this.http.get<JSON>(this.getTotalSpentUrl);
+  }
+
+  getCurrentAmount(): Observable<any> {
+    return this.http.get<JSON>(this.getCurrentAmountUrl);
   }
 
   sendMessage(message: any): Observable<any> {

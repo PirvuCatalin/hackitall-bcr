@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   recommendation = "";
   expenses: any = "";
   totalSpent = 0;
+  currentAmount = 0;
   futureAppointments: any = "";
 
   textFromBackend = "No text from backend ;(";
@@ -43,6 +44,10 @@ export class HomeComponent implements OnInit {
 
     this.bcrBackendService.getFutureAppointments().subscribe(response => {
       this.futureAppointments = response.response;
+    });
+
+    this.bcrBackendService.getCurrentAmount().subscribe(response => {
+      this.currentAmount = response.response;
     });
   }
 }

@@ -29,3 +29,7 @@ img {
     height: max(75x, 10vh);
     width: max(75px, 10vh);
 }
+
+.send-button {
+    background-color: #FF874B !important;
+}

@@ -30,6 +30,18 @@
                     {{totalSpent | number : '1.2-2'}} RON
                 </div>
             </div>
+
+            <div *ngIf="currentAmount != 0">
+                <br>
+                <p class="latest-expenses-title"> Your current amount available:</p>
+                <div class="total-expense">
+                    {{currentAmount | number : '1.2-2'}} RON
+                </div>
+            </div>
+            <div *ngIf="currentAmount == 0">
+                <br>
+                <p class="latest-expenses-title"> Your don't have any amount available.</p>
+            </div>
         </div>
 
         <div class="jumbotron">
