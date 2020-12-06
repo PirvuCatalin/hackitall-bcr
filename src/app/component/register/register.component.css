@@ -17,6 +17,24 @@
     display: none;
 }
 
+.modal-dialog {
+    max-width: unset;
+    width: 50vw;
+}
+
+.modal-content {
+    /* width: 74vw !important; */
+    height: fit-content;
+    max-width: unset;
+    width: 50vw;
+}
+
+.modal-body {
+    max-width: unset;
+    width: 50vw;
+    max-height: 60vh;
+}
+
 .upload-id {
     padding-top: 24px;
 }
@@ -34,6 +52,16 @@
     margin-right: 10px;
 }
 
+#defaultRegisterFormPasswordHelpBlock {
+    text-align: left;
+}
+
+.vid {
+    width: 100%;
+    height: 100%;
+}
+
+
 @media screen and (max-width: 768px) {
     .register-form {
         width: 100vw;
@@ -41,5 +69,22 @@
     }
     .browse-image-text {
         display: none;
+    }
+
+    .modal-dialog {
+        max-width: unset;
+        width: 50vw;
+    }
+    
+    .modal-content {
+        /* width: 74vw !important; */
+        height: fit-content;
+        max-width: unset;
+        width: 100vw;
+    }
+    
+    .modal-body {
+        max-width: unset;
+        width: 100vw;
     }
 }
