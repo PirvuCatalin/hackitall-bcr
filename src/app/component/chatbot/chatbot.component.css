@@ -1,0 +1,31 @@
+.modal-body {
+    height: calc(100vh - 400px);
+    overflow: scroll;
+}
+
+.open-chatbot {
+    height: max(50px, 10vh);
+    width: max(50px, 10vh);
+    position: fixed;
+    bottom: 5vh;
+    right: 5vw;
+    background-image: url("../../../assets/chatbot.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+}
+
+.col-xl-8 {
+    flex: 0 0 100%;
+    max-width: 100%
+}
+
+.chat-body {
+    width: 100%;
+}
+
+img {
+    height: max(75x, 10vh);
+    width: max(75px, 10vh);
+}

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalDirective } from 'angular-bootstrap-md';
 import { BcrBackendService } from 'src/app/service/bcr-backend.service';
 import { CommonService } from 'src/app/service/common.service';
 

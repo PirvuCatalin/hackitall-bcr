@@ -15,6 +15,7 @@ import { HttpconfigInterceptor } from './httpconfig.interceptor';
 import { AddTransactionComponent } from './component/add-transaction/add-transaction.component';
 import { TransactionsComponent } from './component/transactions/transactions.component';
 import { MakeAppointmentComponent } from './component/make-appointment/make-appointment.component';
+import { ChatbotComponent } from './component/chatbot/chatbot.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MakeAppointmentComponent } from './component/make-appointment/make-appo
     LoginComponent,
     AddTransactionComponent,
     TransactionsComponent,
-    MakeAppointmentComponent
+    MakeAppointmentComponent,
+    ChatbotComponent
   ],
   imports: [
     BrowserModule,
